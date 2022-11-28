@@ -1,5 +1,9 @@
 module CPU(
+    input [31:0] instr,
     output [31:0] pc,
+    input [31:0] rval,
+    output [31:0] wval, addr,
+    output write,
     input clock, nreset
 );
     // Program counter
@@ -12,13 +16,6 @@ module CPU(
         .zero(alu_zero),
         .clock(clock), 
         .nreset(nreset)
-    );
-
-    // Memory instruction
-    wire [31:0] instr;
-    ROM c_imem(
-        .val(instr),
-        .addr(pc)
     );
 
     // Instruction decode
@@ -45,7 +42,7 @@ module CPU(
         .branch(branch), 
         .mem_to_reg(mem_to_reg),
         .alu_op(alu_op), 
-        .mem_write(mem_write), 
+        .mem_write(write), 
         .alu_sel(alu_sel), 
         .dr_write(dr_write),
         .op(op)
@@ -89,15 +86,10 @@ module CPU(
         .mode(alu_mode)
     );
 
-    // Memory access
-    wire [31:0] r;
-    RAM c_dmem(
-        .rval(r),
-        .wval(s2),
-        .addr(alu_z),
-        .we(dr_write)
-    );
+    // Memory
+    assign wval = s2;
+    assign addr = alu_z;
 
     // Write back
-    assign d = mem_to_reg ? r : alu_z;
+    assign d = mem_to_reg ? rval : alu_z;
 endmodule
