@@ -1,4 +1,4 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [ yosys nodejs ];
+  nativeBuildInputs = with pkgs; [ nodejs python310 yosys ];
 }
