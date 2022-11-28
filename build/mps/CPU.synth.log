@@ -1,0 +1,528 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)
+
+
+-- Parsing `rtl/mps/SignExtender.v' using frontend ` -vlog2k' --
+
+1. Executing Verilog-2005 frontend: rtl/mps/SignExtender.v
+Parsing Verilog input from `rtl/mps/SignExtender.v' to AST representation.
+Storing AST representation for module `$abstract\SignExtender'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/ALU.v' using frontend ` -vlog2k' --
+
+2. Executing Verilog-2005 frontend: rtl/mps/ALU.v
+Parsing Verilog input from `rtl/mps/ALU.v' to AST representation.
+Storing AST representation for module `$abstract\ALU'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/PCLogic.v' using frontend ` -vlog2k' --
+
+3. Executing Verilog-2005 frontend: rtl/mps/PCLogic.v
+Parsing Verilog input from `rtl/mps/PCLogic.v' to AST representation.
+Storing AST representation for module `$abstract\PCLogic'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/InstructionDecoder.v' using frontend ` -vlog2k' --
+
+4. Executing Verilog-2005 frontend: rtl/mps/InstructionDecoder.v
+Parsing Verilog input from `rtl/mps/InstructionDecoder.v' to AST representation.
+Storing AST representation for module `$abstract\InstructionDecoder'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/ALUControl.v' using frontend ` -vlog2k' --
+
+5. Executing Verilog-2005 frontend: rtl/mps/ALUControl.v
+Parsing Verilog input from `rtl/mps/ALUControl.v' to AST representation.
+Storing AST representation for module `$abstract\ALUControl'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/RegisterFile.v' using frontend ` -vlog2k' --
+
+6. Executing Verilog-2005 frontend: rtl/mps/RegisterFile.v
+Parsing Verilog input from `rtl/mps/RegisterFile.v' to AST representation.
+Storing AST representation for module `$abstract\RegisterFile'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/Control.v' using frontend ` -vlog2k' --
+
+7. Executing Verilog-2005 frontend: rtl/mps/Control.v
+Parsing Verilog input from `rtl/mps/Control.v' to AST representation.
+Storing AST representation for module `$abstract\Control'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/ProgramCounter.v' using frontend ` -vlog2k' --
+
+8. Executing Verilog-2005 frontend: rtl/mps/ProgramCounter.v
+Parsing Verilog input from `rtl/mps/ProgramCounter.v' to AST representation.
+Storing AST representation for module `$abstract\ProgramCounter'.
+Successfully finished Verilog frontend.
+
+-- Parsing `rtl/mps/CPU.v' using frontend ` -vlog2k' --
+
+9. Executing Verilog-2005 frontend: rtl/mps/CPU.v
+Parsing Verilog input from `rtl/mps/CPU.v' to AST representation.
+Storing AST representation for module `$abstract\CPU'.
+Successfully finished Verilog frontend.
+
+-- Running command `prep -top CPU' --
+
+10. Executing PREP pass.
+
+10.1. Executing HIERARCHY pass (managing design hierarchy).
+
+10.2. Executing AST frontend in derive mode using pre-parsed AST for module `\CPU'.
+Generating RTLIL representation for module `\CPU'.
+
+10.2.1. Analyzing design hierarchy..
+Top module:  \CPU
+
+10.2.2. Executing AST frontend in derive mode using pre-parsed AST for module `\ALU'.
+Generating RTLIL representation for module `\ALU'.
+
+10.2.3. Executing AST frontend in derive mode using pre-parsed AST for module `\ALUControl'.
+Generating RTLIL representation for module `\ALUControl'.
+
+10.2.4. Executing AST frontend in derive mode using pre-parsed AST for module `\SignExtender'.
+Generating RTLIL representation for module `\SignExtender'.
+
+10.2.5. Executing AST frontend in derive mode using pre-parsed AST for module `\RegisterFile'.
+Generating RTLIL representation for module `\RegisterFile'.
+Warning: Replacing memory \data with list of registers. See rtl/mps/RegisterFile.v:12
+
+10.2.6. Executing AST frontend in derive mode using pre-parsed AST for module `\Control'.
+Generating RTLIL representation for module `\Control'.
+
+10.2.7. Executing AST frontend in derive mode using pre-parsed AST for module `\InstructionDecoder'.
+Generating RTLIL representation for module `\InstructionDecoder'.
+
+10.2.8. Executing AST frontend in derive mode using pre-parsed AST for module `\PCLogic'.
+Generating RTLIL representation for module `\PCLogic'.
+
+10.2.9. Executing AST frontend in derive mode using pre-parsed AST for module `\ProgramCounter'.
+Generating RTLIL representation for module `\ProgramCounter'.
+
+10.2.10. Analyzing design hierarchy..
+Top module:  \CPU
+Used module:     \SignExtender
+Used module:     \RegisterFile
+Used module:     \InstructionDecoder
+Used module:     \PCLogic
+Used module:     \ProgramCounter
+
+10.2.11. Analyzing design hierarchy..
+Top module:  \CPU
+Used module:     \SignExtender
+Used module:     \RegisterFile
+Used module:     \InstructionDecoder
+Used module:     \PCLogic
+Used module:     \ProgramCounter
+Removing unused module `$abstract\CPU'.
+Removing unused module `$abstract\ProgramCounter'.
+Removing unused module `$abstract\Control'.
+Removing unused module `$abstract\RegisterFile'.
+Removing unused module `$abstract\ALUControl'.
+Removing unused module `$abstract\InstructionDecoder'.
+Removing unused module `$abstract\PCLogic'.
+Removing unused module `$abstract\ALU'.
+Removing unused module `$abstract\SignExtender'.
+Removed 9 unused modules.
+
+10.3. Executing PROC pass (convert processes to netlists).
+
+10.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl/mps/ProgramCounter.v:6$33 in module ProgramCounter.
+Marked 1 switch rules as full_case in process $proc$rtl/mps/RegisterFile.v:0$23 in module RegisterFile.
+Marked 1 switch rules as full_case in process $proc$rtl/mps/RegisterFile.v:0$20 in module RegisterFile.
+Marked 1 switch rules as full_case in process $proc$rtl/mps/RegisterFile.v:10$13 in module RegisterFile.
+Removed a total of 0 dead cases.
+
+10.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 4 assignments to connections.
+
+10.3.4. Executing PROC_INIT pass (extract init attributes).
+
+10.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \nreset in `\ProgramCounter.$proc$rtl/mps/ProgramCounter.v:6$33'.
+
+10.3.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\ProgramCounter.$proc$rtl/mps/ProgramCounter.v:6$33'.
+     1/1: $0\pc[31:0]
+Creating decoders for process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:0$23'.
+     1/1: $1$mem2reg_rd$\data$rtl/mps/RegisterFile.v:9$5_DATA[30:0]$25
+Creating decoders for process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:0$20'.
+     1/1: $1$mem2reg_rd$\data$rtl/mps/RegisterFile.v:8$4_DATA[30:0]$22
+Creating decoders for process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13'.
+     1/7: $1$mem2reg_wr$\data$rtl/mps/RegisterFile.v:12$6_ADDR[2:0]$18
+     2/7: $1$mem2reg_wr$\data$rtl/mps/RegisterFile.v:12$6_DATA[30:0]$19
+     3/7: $0\data[4][30:0]
+     4/7: $0\data[3][30:0]
+     5/7: $0\data[2][30:0]
+     6/7: $0\data[1][30:0]
+     7/7: $0\data[0][30:0]
+
+10.3.7. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\RegisterFile.$mem2reg_rd$\data$rtl/mps/RegisterFile.v:9$5_DATA' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:0$23'.
+No latch inferred for signal `\RegisterFile.$mem2reg_rd$\data$rtl/mps/RegisterFile.v:8$4_DATA' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:0$20'.
+No latch inferred for signal `\RegisterFile.$mem2reg_wr$\data$rtl/mps/RegisterFile.v:12$6_ADDR' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13'.
+No latch inferred for signal `\RegisterFile.$mem2reg_wr$\data$rtl/mps/RegisterFile.v:12$6_DATA' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13'.
+Latch inferred for signal `\RegisterFile.\data[0]' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13': $auto$proc_dlatch.cc:427:proc_dlatch$112
+Latch inferred for signal `\RegisterFile.\data[1]' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13': $auto$proc_dlatch.cc:427:proc_dlatch$129
+Latch inferred for signal `\RegisterFile.\data[2]' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13': $auto$proc_dlatch.cc:427:proc_dlatch$146
+Latch inferred for signal `\RegisterFile.\data[3]' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13': $auto$proc_dlatch.cc:427:proc_dlatch$163
+Latch inferred for signal `\RegisterFile.\data[4]' from process `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13': $auto$proc_dlatch.cc:427:proc_dlatch$180
+
+10.3.8. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\ProgramCounter.\pc' using process `\ProgramCounter.$proc$rtl/mps/ProgramCounter.v:6$33'.
+  created $adff cell `$procdff$181' with positive edge clock and negative level reset.
+
+10.3.9. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+10.3.10. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `ProgramCounter.$proc$rtl/mps/ProgramCounter.v:6$33'.
+Found and cleaned up 1 empty switch in `\RegisterFile.$proc$rtl/mps/RegisterFile.v:0$23'.
+Removing empty process `RegisterFile.$proc$rtl/mps/RegisterFile.v:0$23'.
+Found and cleaned up 1 empty switch in `\RegisterFile.$proc$rtl/mps/RegisterFile.v:0$20'.
+Removing empty process `RegisterFile.$proc$rtl/mps/RegisterFile.v:0$20'.
+Found and cleaned up 2 empty switches in `\RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13'.
+Removing empty process `RegisterFile.$proc$rtl/mps/RegisterFile.v:10$13'.
+Cleaned up 4 empty switches.
+
+10.3.11. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ProgramCounter.
+Optimizing module PCLogic.
+<suppressed ~2 debug messages>
+Optimizing module InstructionDecoder.
+Optimizing module RegisterFile.
+<suppressed ~43 debug messages>
+Optimizing module SignExtender.
+Optimizing module CPU.
+
+10.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ProgramCounter.
+Optimizing module PCLogic.
+Optimizing module InstructionDecoder.
+Optimizing module RegisterFile.
+Optimizing module SignExtender.
+Optimizing module CPU.
+
+10.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ProgramCounter..
+Finding unused cells or wires in module \PCLogic..
+Finding unused cells or wires in module \InstructionDecoder..
+Finding unused cells or wires in module \RegisterFile..
+Finding unused cells or wires in module \SignExtender..
+Finding unused cells or wires in module \CPU..
+Removed 8 unused cells and 78 unused wires.
+<suppressed ~15 debug messages>
+
+10.6. Executing CHECK pass (checking for obvious problems).
+Checking module CPU...
+Checking module InstructionDecoder...
+Checking module PCLogic...
+Checking module ProgramCounter...
+Checking module RegisterFile...
+Checking module SignExtender...
+Found and reported 0 problems.
+
+10.7. Executing OPT pass (performing simple optimizations).
+
+10.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CPU.
+Optimizing module InstructionDecoder.
+Optimizing module PCLogic.
+Optimizing module ProgramCounter.
+Optimizing module RegisterFile.
+Optimizing module SignExtender.
+
+10.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CPU'.
+Finding identical cells in module `\InstructionDecoder'.
+Finding identical cells in module `\PCLogic'.
+Finding identical cells in module `\ProgramCounter'.
+Finding identical cells in module `\RegisterFile'.
+Finding identical cells in module `\SignExtender'.
+Removed a total of 0 cells.
+
+10.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CPU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \InstructionDecoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \PCLogic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \ProgramCounter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \RegisterFile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \SignExtender..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+10.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CPU.
+  Optimizing cells in module \InstructionDecoder.
+  Optimizing cells in module \PCLogic.
+  Optimizing cells in module \ProgramCounter.
+  Optimizing cells in module \RegisterFile.
+  Optimizing cells in module \SignExtender.
+Performed a total of 0 changes.
+
+10.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CPU'.
+Finding identical cells in module `\InstructionDecoder'.
+Finding identical cells in module `\PCLogic'.
+Finding identical cells in module `\ProgramCounter'.
+Finding identical cells in module `\RegisterFile'.
+Finding identical cells in module `\SignExtender'.
+Removed a total of 0 cells.
+
+10.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CPU..
+Finding unused cells or wires in module \InstructionDecoder..
+Finding unused cells or wires in module \PCLogic..
+Finding unused cells or wires in module \ProgramCounter..
+Finding unused cells or wires in module \RegisterFile..
+Finding unused cells or wires in module \SignExtender..
+
+10.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CPU.
+Optimizing module InstructionDecoder.
+Optimizing module PCLogic.
+Optimizing module ProgramCounter.
+Optimizing module RegisterFile.
+Optimizing module SignExtender.
+
+10.7.8. Finished OPT passes. (There is nothing left to do.)
+
+10.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 29 bits (of 32) from port B of cell PCLogic.$add$rtl/mps/PCLogic.v:8$26 ($add).
+Removed top 2 bits (of 32) from wire PCLogic.pc_jump.
+Removed top 1 bits (of 3) from port B of cell RegisterFile.$procmux$38_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell RegisterFile.$procmux$39_CMP0 ($eq).
+Removed top 1 bits (of 32) from mux cell RegisterFile.$ternary$rtl/mps/RegisterFile.v:8$9 ($mux).
+Removed top 1 bits (of 32) from mux cell RegisterFile.$ternary$rtl/mps/RegisterFile.v:9$12 ($mux).
+Removed top 2 bits (of 3) from port B of cell RegisterFile.$procmux$40_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell RegisterFile.$procmux$45_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell RegisterFile.$procmux$46_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell RegisterFile.$procmux$47_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell RegisterFile.$procmux$63_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell RegisterFile.$procmux$70_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell RegisterFile.$procmux$78_CMP0 ($eq).
+
+10.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CPU..
+Finding unused cells or wires in module \InstructionDecoder..
+Finding unused cells or wires in module \PCLogic..
+Finding unused cells or wires in module \ProgramCounter..
+Finding unused cells or wires in module \RegisterFile..
+Finding unused cells or wires in module \SignExtender..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+10.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+10.11. Executing OPT pass (performing simple optimizations).
+
+10.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CPU.
+Optimizing module InstructionDecoder.
+Optimizing module PCLogic.
+Optimizing module ProgramCounter.
+Optimizing module RegisterFile.
+Optimizing module SignExtender.
+
+10.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CPU'.
+Finding identical cells in module `\InstructionDecoder'.
+Finding identical cells in module `\PCLogic'.
+Finding identical cells in module `\ProgramCounter'.
+Finding identical cells in module `\RegisterFile'.
+Finding identical cells in module `\SignExtender'.
+Removed a total of 0 cells.
+
+10.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CPU..
+Finding unused cells or wires in module \InstructionDecoder..
+Finding unused cells or wires in module \PCLogic..
+Finding unused cells or wires in module \ProgramCounter..
+Finding unused cells or wires in module \RegisterFile..
+Finding unused cells or wires in module \SignExtender..
+
+10.11.4. Finished fast OPT passes.
+
+10.12. Printing statistics.
+
+=== CPU ===
+
+   Number of wires:                 32
+   Number of wire bits:            473
+   Number of public wires:          30
+   Number of public wire bits:     436
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 11
+     $mux                            3
+     ALU                             1
+     ALUControl                      1
+     Control                         1
+     InstructionDecoder              1
+     PCLogic                         1
+     ProgramCounter                  1
+     RegisterFile                    1
+     SignExtender                    1
+
+=== InstructionDecoder ===
+
+   Number of wires:                  8
+   Number of wire bits:            101
+   Number of public wires:           8
+   Number of public wire bits:     101
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  0
+
+=== PCLogic ===
+
+   Number of wires:                 12
+   Number of wire bits:            252
+   Number of public wires:          10
+   Number of public wire bits:     219
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  5
+     $add                            2
+     $and                            1
+     $mux                            2
+
+=== ProgramCounter ===
+
+   Number of wires:                  4
+   Number of wire bits:             66
+   Number of public wires:           4
+   Number of public wire bits:      66
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     $adff                           1
+
+=== RegisterFile ===
+
+   Number of wires:                 49
+   Number of wire bits:            364
+   Number of public wires:          12
+   Number of public wire bits:     267
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 44
+     $and                            5
+     $dlatch                         5
+     $eq                            12
+     $logic_and                      1
+     $logic_not                      5
+     $mux                            2
+     $not                            6
+     $pmux                           2
+     $reduce_bool                    1
+     $reduce_or                      5
+
+=== SignExtender ===
+
+   Number of wires:                  2
+   Number of wire bits:             48
+   Number of public wires:           2
+   Number of public wire bits:      48
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  0
+
+=== design hierarchy ===
+
+   CPU                               1
+     InstructionDecoder              1
+     PCLogic                         1
+     ProgramCounter                  1
+     RegisterFile                    1
+     SignExtender                    1
+
+   Number of wires:                107
+   Number of wire bits:           1304
+   Number of public wires:          66
+   Number of public wire bits:    1137
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 56
+     $add                            2
+     $adff                           1
+     $and                            6
+     $dlatch                         5
+     $eq                            12
+     $logic_and                      1
+     $logic_not                      5
+     $mux                            7
+     $not                            6
+     $pmux                           2
+     $reduce_bool                    1
+     $reduce_or                      5
+     ALU                             1
+     ALUControl                      1
+     Control                         1
+
+10.13. Executing CHECK pass (checking for obvious problems).
+Checking module CPU...
+Checking module InstructionDecoder...
+Checking module PCLogic...
+Checking module ProgramCounter...
+Checking module RegisterFile...
+Checking module SignExtender...
+Found and reported 0 problems.
+
+-- Writing to `build/mps/CPU.prep.json' using backend `json' --
+
+11. Executing JSON backend.
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 9ac086ff72, CPU: user 0.15s system 0.01s, MEM: 14.38 MB peak
+Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)
+Time spent: 23% 4x opt_clean (0 sec), 18% 5x opt_expr (0 sec), ...

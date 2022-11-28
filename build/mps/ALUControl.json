@@ -1,0 +1,79 @@
+{
+    "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+    "modules": {
+        "ALUControl": {
+            "attributes": {
+                "hdlname": "\\ALUControl",
+                "blackbox": "00000000000000000000000000000001",
+                "top": "00000000000000000000000000000001",
+                "src": "rtl/mps/ALUControl.v:1.1-7.10"
+            },
+            "ports": {
+                "mode": {
+                    "direction": "output",
+                    "bits": [
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                },
+                "op": {
+                    "direction": "input",
+                    "bits": [
+                        6
+                    ]
+                },
+                "func": {
+                    "direction": "input",
+                    "bits": [
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12
+                    ]
+                }
+            },
+            "cells": {},
+            "netnames": {
+                "func": {
+                    "hide_name": 0,
+                    "bits": [
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12
+                    ],
+                    "attributes": {
+                        "src": "rtl/mps/ALUControl.v:4.17-4.21"
+                    }
+                },
+                "mode": {
+                    "hide_name": 0,
+                    "bits": [
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "attributes": {
+                        "src": "rtl/mps/ALUControl.v:2.18-2.22"
+                    }
+                },
+                "op": {
+                    "hide_name": 0,
+                    "bits": [
+                        6
+                    ],
+                    "attributes": {
+                        "src": "rtl/mps/ALUControl.v:3.11-3.13"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:s="https://github.com/nturley/netlistsvg" width="192" height="138">
+  <style>svg {
+    stroke:#000;
+    fill:none;
+  }
+  text {
+    fill:#000;
+    stroke:none;
+    font-size:10px;
+    font-weight: bold;
+    font-family: "Courier New", monospace;
+  }
+  .nodelabel {
+    text-anchor: middle;
+  }
+  .inputPortLabel {
+    text-anchor: end;
+  }
+  .splitjoinBody {
+    fill:#000;
+  }</style>
+  <g s:type="outputExt" transform="translate(96,22)" s:width="30" s:height="20" id="cell_dr_sel">
+    <text x="15" y="-4" class="nodelabel cell_dr_sel" s:attribute="ref">dr_sel</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_dr_sel"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(12,22)" s:width="30" s:height="20" id="cell_jump">
+    <text x="15" y="-4" class="nodelabel cell_jump" s:attribute="ref">jump</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_jump"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(144,22)" s:width="30" s:height="20" id="cell_branch">
+    <text x="15" y="-4" class="nodelabel cell_branch" s:attribute="ref">branch</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_branch"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(78,106)" s:width="30" s:height="20" id="cell_mem_to_reg">
+    <text x="15" y="-4" class="nodelabel cell_mem_to_reg" s:attribute="ref">mem_to_reg</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_mem_to_reg"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(12,64)" s:width="30" s:height="20" id="cell_alu_op">
+    <text x="15" y="-4" class="nodelabel cell_alu_op" s:attribute="ref">alu_op</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_alu_op"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(12,106)" s:width="30" s:height="20" id="cell_mem_write">
+    <text x="15" y="-4" class="nodelabel cell_mem_write" s:attribute="ref">mem_write</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_mem_write"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(60,64)" s:width="30" s:height="20" id="cell_alu_sel">
+    <text x="15" y="-4" class="nodelabel cell_alu_sel" s:attribute="ref">alu_sel</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_alu_sel"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="outputExt" transform="translate(114,64)" s:width="30" s:height="20" id="cell_dr_write">
+    <text x="15" y="-4" class="nodelabel cell_dr_write" s:attribute="ref">dr_write</text>
+    <s:alias val="$_outputExt_"/>
+    <path d="M30,0 L30,20 L15,20 L0,10 L15,0 Z" class="cell_dr_write"/>
+    <g s:x="0" s:y="10" s:pid="A"/>
+  </g>
+  <g s:type="inputExt" transform="translate(54,22)" s:width="30" s:height="20" id="cell_op">
+    <text x="15" y="-4" class="nodelabel cell_op" s:attribute="ref">op</text>
+    <s:alias val="$_inputExt_"/>
+    <path d="M0,0 L0,20 L15,20 L30,10 L15,0 Z" class="cell_op"/>
+    <g s:x="28" s:y="10" s:pid="Y"/>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+{
+  "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+  "modules": {
+    "SignExtender": {
+      "attributes": {
+        "hdlname": "\\SignExtender",
+        "top": "00000000000000000000000000000001",
+        "src": "rtl/mps/SignExtender.v:1.1-6.10"
+      },
+      "ports": {
+        "imm_ext": {
+          "direction": "output",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17 ]
+        },
+        "imm": {
+          "direction": "input",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "imm": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ],
+          "attributes": {
+            "src": "rtl/mps/SignExtender.v:3.18-3.21"
+          }
+        },
+        "imm_ext": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17 ],
+          "attributes": {
+            "src": "rtl/mps/SignExtender.v:2.19-2.26"
+          }
+        }
+      }
+    }
+  }
+}

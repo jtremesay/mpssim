@@ -1,0 +1,118 @@
+{
+  "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+  "modules": {
+    "Control": {
+      "attributes": {
+        "hdlname": "\\Control",
+        "blackbox": "00000000000000000000000000000001",
+        "top": "00000000000000000000000000000001",
+        "src": "rtl/mps/Control.v:1.1-6.10"
+      },
+      "ports": {
+        "dr_sel": {
+          "direction": "output",
+          "bits": [ 2 ]
+        },
+        "jump": {
+          "direction": "output",
+          "bits": [ 3 ]
+        },
+        "branch": {
+          "direction": "output",
+          "bits": [ 4 ]
+        },
+        "mem_to_reg": {
+          "direction": "output",
+          "bits": [ 5 ]
+        },
+        "alu_op": {
+          "direction": "output",
+          "bits": [ 6 ]
+        },
+        "mem_write": {
+          "direction": "output",
+          "bits": [ 7 ]
+        },
+        "alu_sel": {
+          "direction": "output",
+          "bits": [ 8 ]
+        },
+        "dr_write": {
+          "direction": "output",
+          "bits": [ 9 ]
+        },
+        "op": {
+          "direction": "input",
+          "bits": [ 10, 11, 12, 13, 14, 15 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "alu_op": {
+          "hide_name": 0,
+          "bits": [ 6 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.46-2.52"
+          }
+        },
+        "alu_sel": {
+          "hide_name": 0,
+          "bits": [ 8 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.65-2.72"
+          }
+        },
+        "branch": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.26-2.32"
+          }
+        },
+        "dr_sel": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.12-2.18"
+          }
+        },
+        "dr_write": {
+          "hide_name": 0,
+          "bits": [ 9 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.74-2.82"
+          }
+        },
+        "jump": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.20-2.24"
+          }
+        },
+        "mem_to_reg": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.34-2.44"
+          }
+        },
+        "mem_write": {
+          "hide_name": 0,
+          "bits": [ 7 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:2.54-2.63"
+          }
+        },
+        "op": {
+          "hide_name": 0,
+          "bits": [ 10, 11, 12, 13, 14, 15 ],
+          "attributes": {
+            "src": "rtl/mps/Control.v:3.17-3.19"
+          }
+        }
+      }
+    }
+  }
+}
