@@ -7,16 +7,25 @@ module CPU(
     input clock, nreset
 );
     // Program counter
+    wire [31:0] pc_next;
     ProgramCounter c_pc(
+        .pc(pc), 
+        .pc_next(pc_next),
+        .clock(clock), 
+        .nreset(nreset)
+    );
+
+    PCLogic c_pclogic(
+        .pc_next(pc_next),
         .pc(pc), 
         .jump_addr(jump_addr),
         .branch_addr(imm_ext),
         .jump(jump),
         .branch(branch),
         .zero(alu_zero),
-        .clock(clock), 
-        .nreset(nreset)
     );
+
+
 
     // Instruction decode
     wire [4:0] sr1, sr2, dr;

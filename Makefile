@@ -1,4 +1,4 @@
-all: build/demo/Adder.svg build/mps/ALU.svg build/mps/ALUControl.svg build/mps/Control.svg build/mps/InstructionDecoder.svg build/mps/ProgramCounter.svg build/mps/SignExtender.svg build/mps/RegisterFile.svg build/mps/CPU.svg build/soc/main.svg
+all: build/demo/Adder.svg build/mps/ALU.svg build/mps/ALUControl.svg build/mps/Control.svg build/mps/InstructionDecoder.svg build/mps/ProgramCounter.svg build/mps/PCLogic.svg build/mps/SignExtender.svg build/mps/RegisterFile.svg build/mps/CPU.svg build/soc/main.svg
 
 build/demo/Adder.svg: build/demo/Adder.json
 	npx netlistsvg -o build/demo/Adder.svg build/demo/Adder.json
@@ -54,6 +54,15 @@ build/mps/ProgramCounter.json: build/mps/ProgramCounter.prep.json
 build/mps/ProgramCounter.prep.json: rtl/mps/ProgramCounter.v
 	yosys -L build/mps/ProgramCounter.synth.log -o build/mps/ProgramCounter.prep.json -p 'prep -top ProgramCounter' rtl/mps/ProgramCounter.v
 
+build/mps/PCLogic.svg: build/mps/PCLogic.json
+	npx netlistsvg -o build/mps/PCLogic.svg build/mps/PCLogic.json
+
+build/mps/PCLogic.json: build/mps/PCLogic.prep.json
+	tools/netlist-postprocessor.py build/mps/PCLogic.prep.json build/mps/PCLogic.json rtl/mps/PCLogic.pp.json
+
+build/mps/PCLogic.prep.json: rtl/mps/PCLogic.v
+	yosys -L build/mps/PCLogic.synth.log -o build/mps/PCLogic.prep.json -p 'prep -top PCLogic' rtl/mps/PCLogic.v
+
 build/mps/SignExtender.svg: build/mps/SignExtender.json
 	npx netlistsvg -o build/mps/SignExtender.svg build/mps/SignExtender.json
 
@@ -78,8 +87,8 @@ build/mps/CPU.svg: build/mps/CPU.json
 build/mps/CPU.json: build/mps/CPU.prep.json
 	tools/netlist-postprocessor.py build/mps/CPU.prep.json build/mps/CPU.json rtl/mps/CPU.pp.json
 
-build/mps/CPU.prep.json: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
-	yosys -L build/mps/CPU.synth.log -o build/mps/CPU.prep.json -p 'prep -top CPU' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
+build/mps/CPU.prep.json: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/PCLogic.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
+	yosys -L build/mps/CPU.synth.log -o build/mps/CPU.prep.json -p 'prep -top CPU' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/PCLogic.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
 
 build/soc/main.svg: build/soc/main.json
 	npx netlistsvg -o build/soc/main.svg build/soc/main.json
@@ -87,10 +96,10 @@ build/soc/main.svg: build/soc/main.json
 build/soc/main.json: build/soc/main.prep.json
 	tools/netlist-postprocessor.py build/soc/main.prep.json build/soc/main.json rtl/soc/main.pp.json
 
-build/soc/main.prep.json: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
-	yosys -L build/soc/main.synth.log -o build/soc/main.prep.json -p 'prep -top main' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
+build/soc/main.prep.json: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/PCLogic.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
+	yosys -L build/soc/main.synth.log -o build/soc/main.prep.json -p 'prep -top main' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/PCLogic.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
 
 clean:
-	$(RM) build/demo/Adder.svg build/demo/Adder.json build/demo/Adder.prep.json build/demo/Adder.synth.log build/mps/ALU.svg build/mps/ALU.json build/mps/ALU.prep.json build/mps/ALU.synth.log build/mps/ALUControl.svg build/mps/ALUControl.json build/mps/ALUControl.prep.json build/mps/ALUControl.synth.log build/mps/Control.svg build/mps/Control.json build/mps/Control.prep.json build/mps/Control.synth.log build/mps/InstructionDecoder.svg build/mps/InstructionDecoder.json build/mps/InstructionDecoder.prep.json build/mps/InstructionDecoder.synth.log build/mps/ProgramCounter.svg build/mps/ProgramCounter.json build/mps/ProgramCounter.prep.json build/mps/ProgramCounter.synth.log build/mps/SignExtender.svg build/mps/SignExtender.json build/mps/SignExtender.prep.json build/mps/SignExtender.synth.log build/mps/RegisterFile.svg build/mps/RegisterFile.json build/mps/RegisterFile.prep.json build/mps/RegisterFile.synth.log build/mps/CPU.svg build/mps/CPU.json build/mps/CPU.prep.json build/mps/CPU.synth.log build/soc/main.svg build/soc/main.json build/soc/main.prep.json build/soc/main.synth.log
+	$(RM) build/demo/Adder.svg build/demo/Adder.json build/demo/Adder.prep.json build/demo/Adder.synth.log build/mps/ALU.svg build/mps/ALU.json build/mps/ALU.prep.json build/mps/ALU.synth.log build/mps/ALUControl.svg build/mps/ALUControl.json build/mps/ALUControl.prep.json build/mps/ALUControl.synth.log build/mps/Control.svg build/mps/Control.json build/mps/Control.prep.json build/mps/Control.synth.log build/mps/InstructionDecoder.svg build/mps/InstructionDecoder.json build/mps/InstructionDecoder.prep.json build/mps/InstructionDecoder.synth.log build/mps/ProgramCounter.svg build/mps/ProgramCounter.json build/mps/ProgramCounter.prep.json build/mps/ProgramCounter.synth.log build/mps/PCLogic.svg build/mps/PCLogic.json build/mps/PCLogic.prep.json build/mps/PCLogic.synth.log build/mps/SignExtender.svg build/mps/SignExtender.json build/mps/SignExtender.prep.json build/mps/SignExtender.synth.log build/mps/RegisterFile.svg build/mps/RegisterFile.json build/mps/RegisterFile.prep.json build/mps/RegisterFile.synth.log build/mps/CPU.svg build/mps/CPU.json build/mps/CPU.prep.json build/mps/CPU.synth.log build/soc/main.svg build/soc/main.json build/soc/main.prep.json build/soc/main.synth.log
 
 PHONY: all clean
