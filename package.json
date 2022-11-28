@@ -1,0 +1,10 @@
+{
+  "name": "mpssim",
+  "version": "0.0.1",
+  "description": "A MIPS processor simulator",
+  "scripts": {},
+  "author": "Jonathan Tremesaygues",
+  "dependencies": {
+    "netlistsvg": "^1.0.2"
+  }
+}
