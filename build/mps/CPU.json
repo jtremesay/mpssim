@@ -1,5 +1,5 @@
 {
-    "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+    "creator": "Yosys 0.23 (git sha1 7ce5011c24b, gcc 11.3.0 -fPIC -Os)",
     "modules": {
         "ALU": {
             "attributes": {
@@ -2563,7 +2563,7 @@
         "InstructionDecoder": {
             "attributes": {
                 "hdlname": "\\InstructionDecoder",
-                "src": "rtl/mps/InstructionDecoder.v:1.1-16.10"
+                "src": "rtl/mps/InstructionDecoder.v:1.1-15.10"
             },
             "ports": {
                 "sr1": {
@@ -2798,7 +2798,7 @@
                         33
                     ],
                     "attributes": {
-                        "src": "rtl/mps/InstructionDecoder.v:7.18-7.23"
+                        "src": "rtl/mps/InstructionDecoder.v:6.18-6.23"
                     }
                 },
                 "jump_addr": {
@@ -2846,7 +2846,7 @@
                         33
                     ],
                     "attributes": {
-                        "src": "rtl/mps/InstructionDecoder.v:6.28-6.30"
+                        "src": "rtl/mps/InstructionDecoder.v:5.28-5.30"
                     }
                 },
                 "sr1": {
@@ -6606,112 +6606,112 @@
                         "src": "rtl/mps/RegisterFile.v:0.0-0.0"
                     }
                 },
-                "$auto$rtlil.cc:2367:Not$114": {
+                "$auto$rtlil.cc:2371:Not$114": {
                     "hide_name": 1,
                     "bits": [
                         113
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2367:Not$131": {
+                "$auto$rtlil.cc:2371:Not$131": {
                     "hide_name": 1,
                     "bits": [
                         115
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2367:Not$148": {
+                "$auto$rtlil.cc:2371:Not$148": {
                     "hide_name": 1,
                     "bits": [
                         117
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2367:Not$165": {
+                "$auto$rtlil.cc:2371:Not$165": {
                     "hide_name": 1,
                     "bits": [
                         119
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2367:Not$91": {
+                "$auto$rtlil.cc:2371:Not$91": {
                     "hide_name": 1,
                     "bits": [
                         121
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2367:Not$97": {
+                "$auto$rtlil.cc:2371:Not$97": {
                     "hide_name": 1,
                     "bits": [
                         123
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2371:ReduceOr$109": {
+                "$auto$rtlil.cc:2375:ReduceOr$109": {
                     "hide_name": 1,
                     "bits": [
                         125
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2371:ReduceOr$126": {
+                "$auto$rtlil.cc:2375:ReduceOr$126": {
                     "hide_name": 1,
                     "bits": [
                         127
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2371:ReduceOr$143": {
+                "$auto$rtlil.cc:2375:ReduceOr$143": {
                     "hide_name": 1,
                     "bits": [
                         129
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2371:ReduceOr$160": {
+                "$auto$rtlil.cc:2375:ReduceOr$160": {
                     "hide_name": 1,
                     "bits": [
                         131
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2371:ReduceOr$177": {
+                "$auto$rtlil.cc:2375:ReduceOr$177": {
                     "hide_name": 1,
                     "bits": [
                         133
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2397:And$107": {
+                "$auto$rtlil.cc:2401:And$107": {
                     "hide_name": 1,
                     "bits": [
                         124
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2397:And$124": {
+                "$auto$rtlil.cc:2401:And$124": {
                     "hide_name": 1,
                     "bits": [
                         126
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2397:And$141": {
+                "$auto$rtlil.cc:2401:And$141": {
                     "hide_name": 1,
                     "bits": [
                         128
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2397:And$158": {
+                "$auto$rtlil.cc:2401:And$158": {
                     "hide_name": 1,
                     "bits": [
                         130
                     ],
                     "attributes": {}
                 },
-                "$auto$rtlil.cc:2397:And$175": {
+                "$auto$rtlil.cc:2401:And$175": {
                     "hide_name": 1,
                     "bits": [
                         132

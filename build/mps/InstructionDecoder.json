@@ -1,11 +1,11 @@
 {
-    "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+    "creator": "Yosys 0.23 (git sha1 7ce5011c24b, gcc 11.3.0 -fPIC -Os)",
     "modules": {
         "InstructionDecoder": {
             "attributes": {
                 "hdlname": "\\InstructionDecoder",
                 "top": "00000000000000000000000000000001",
-                "src": "rtl/mps/InstructionDecoder.v:1.1-16.10"
+                "src": "rtl/mps/InstructionDecoder.v:1.1-15.10"
             },
             "ports": {
                 "sr1": {
@@ -240,7 +240,7 @@
                         33
                     ],
                     "attributes": {
-                        "src": "rtl/mps/InstructionDecoder.v:7.18-7.23"
+                        "src": "rtl/mps/InstructionDecoder.v:6.18-6.23"
                     }
                 },
                 "jump_addr": {
@@ -288,7 +288,7 @@
                         33
                     ],
                     "attributes": {
-                        "src": "rtl/mps/InstructionDecoder.v:6.28-6.30"
+                        "src": "rtl/mps/InstructionDecoder.v:5.28-5.30"
                     }
                 },
                 "sr1": {
