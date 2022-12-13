@@ -2,7 +2,6 @@ module InstructionDecoder(
     output [4:0] sr1, sr2, dr,
     output [15:0] imm,
     output [25:0] jump_addr,
-    output [5:0] alu_func,
     output [5:0] alu_func, op,
     input [31:0] instr
 );
