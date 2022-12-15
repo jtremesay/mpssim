@@ -92,8 +92,13 @@ module CPU(
     assign d = mem_to_reg ? rval : alu_z;
 
     // PC next
-    wire [31:0] pc_inc = pc + 4;
-    wire [31:0] pc_jump = {pc[31:28], (jump_addr << 2)};
-    wire [31:0] pc_branch = pc_inc + (imm_ext << 2);
-    assign next_pc = jump ? pc_jump : (branch & alu_zero) ? pc_branch : pc_inc;
+    PCNext pc_next(
+        .next_pc(next_pc),
+        .pc(pc),
+        .imm(imm_ext),
+        .addr(jump_addr),
+        .jump(jump),
+        .branch(branch),
+        .zero(alu_zero)
+    );
 endmodule

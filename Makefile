@@ -1,4 +1,4 @@
-all: build/demo/Adder.svg build/mps/ALU.svg build/mps/ALUControl.svg build/mps/Control.svg build/mps/InstructionDecoder.svg build/mps/ProgramCounter.svg build/mps/SignExtender.svg build/mps/CPU.svg build/soc/main.svg
+all: build/demo/Adder.svg build/mps/ALU.svg build/mps/ALUControl.svg build/mps/Control.svg build/mps/InstructionDecoder.svg build/mps/PCNext.svg build/mps/ProgramCounter.svg build/mps/SignExtender.svg build/mps/CPU.svg build/soc/main.svg
 
 build/demo/Adder.svg: build/demo/Adder.json
 	npx netlistsvg -o build/demo/Adder.svg build/demo/Adder.json
@@ -60,6 +60,18 @@ build/mps/InstructionDecoder.synth.json: build/mps/InstructionDecoder.v
 build/mps/InstructionDecoder.v: rtl/mps/InstructionDecoder.v
 	yosys -L build/mps/InstructionDecoder.synth.log -o build/mps/InstructionDecoder.v -p 'prep -top InstructionDecoder' rtl/mps/InstructionDecoder.v
 
+build/mps/PCNext.svg: build/mps/PCNext.json
+	npx netlistsvg -o build/mps/PCNext.svg build/mps/PCNext.json
+
+build/mps/PCNext.json: build/mps/PCNext.synth.json
+	tools/netlist-postprocessor.py build/mps/PCNext.synth.json build/mps/PCNext.json rtl/mps/PCNext.pp.json
+
+build/mps/PCNext.synth.json: build/mps/PCNext.v
+	yosys -L build/mps/PCNext.json.log -o build/mps/PCNext.synth.json -p 'prep -top PCNext' build/mps/PCNext.v
+
+build/mps/PCNext.v: rtl/mps/PCNext.v
+	yosys -L build/mps/PCNext.synth.log -o build/mps/PCNext.v -p 'prep -top PCNext' rtl/mps/PCNext.v
+
 build/mps/ProgramCounter.svg: build/mps/ProgramCounter.json
 	npx netlistsvg -o build/mps/ProgramCounter.svg build/mps/ProgramCounter.json
 
@@ -93,8 +105,8 @@ build/mps/CPU.json: build/mps/CPU.synth.json
 build/mps/CPU.synth.json: build/mps/CPU.v
 	yosys -L build/mps/CPU.json.log -o build/mps/CPU.synth.json -p 'prep -top CPU' build/mps/CPU.v
 
-build/mps/CPU.v: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
-	yosys -L build/mps/CPU.synth.log -o build/mps/CPU.v -p 'prep -top CPU' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
+build/mps/CPU.v: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/PCNext.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
+	yosys -L build/mps/CPU.synth.log -o build/mps/CPU.v -p 'prep -top CPU' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/RegisterFile.v rtl/mps/PCNext.v rtl/mps/Control.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v
 
 build/soc/main.svg: build/soc/main.json
 	npx netlistsvg -o build/soc/main.svg build/soc/main.json
@@ -105,8 +117,8 @@ build/soc/main.json: build/soc/main.synth.json
 build/soc/main.synth.json: build/soc/main.v
 	yosys -L build/soc/main.json.log -o build/soc/main.synth.json -p 'prep -top main' build/soc/main.v
 
-build/soc/main.v: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
-	yosys -L build/soc/main.synth.log -o build/soc/main.v -p 'prep -top main' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
+build/soc/main.v: rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/PCNext.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
+	yosys -L build/soc/main.synth.log -o build/soc/main.v -p 'prep -top main' rtl/mps/SignExtender.v rtl/mps/ALU.v rtl/mps/InstructionDecoder.v rtl/mps/ALUControl.v rtl/mps/ProgramCounter.v rtl/mps/CPU.v rtl/mps/PCNext.v rtl/mps/RegisterFile.v rtl/mps/Control.v rtl/soc/ROM.v rtl/soc/RAM.v rtl/soc/main.v
 
 clean:
 	$(RM) build/**/*.svg build/**/*.json build/**/*.v build/**/*.log
