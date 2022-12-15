@@ -7,66 +7,55 @@ module CPU(
     input clock, nreset
 );
     // Program counter
-    wire [31:0] pc_next;
+    wire [31:0] next_pc;
     ProgramCounter c_pc(
         .pc(pc), 
-        .pc_next(pc_next),
+        .next_pc(next_pc),
         .clock(clock), 
         .nreset(nreset)
     );
 
-    PCLogic c_pclogic(
-        .pc_next(pc_next),
-        .pc(pc), 
-        .jump_addr(jump_addr),
-        .branch_addr(imm_ext),
-        .jump(jump),
-        .branch(branch),
-        .zero(alu_zero),
-    );
-
-
-
     // Instruction decode
-    wire [4:0] sr1, sr2, dr;
+    wire [4:0] reg_s, reg_t, reg_d;
     wire [15:0] imm;
     wire [25:0] jump_addr;
-    wire [5:0] alu_func, op;
+    wire [5:0] func, op;
     InstructionDecoder c_id(
-        .sr1(sr1),
-        .sr2(sr2),
-        .dr(dr),
+        .op(op),
+        .func(func),
+        .reg_s(reg_s),
+        .reg_t(reg_t),
+        .reg_d(reg_d),
         .imm(imm),
         .jump_addr(jump_addr),
-        .alu_func(alu_func),
-        .instr(instr),
-        .op(op)
+        .instr(instr)
     );
 
     // Control unit
-    wire dr_sel, jump, branch, mem_to_reg, alu_op, mem_write, alu_sel, dr_write;
+    wire reg_d_sel, jump, branch, mem_to_reg, mem_write, alu_sel, reg_write;
+    wire [0:0] alu_op;
     Control c_ctrl(
-        .dr_sel(dr_sel), 
+        .reg_d_sel(reg_d_sel), 
         .jump(jump), 
         .branch(branch), 
         .mem_to_reg(mem_to_reg),
-        .alu_op(alu_op), 
         .mem_write(write), 
         .alu_sel(alu_sel), 
-        .dr_write(dr_write),
+        .reg_write(reg_write),
+        .alu_op(alu_op), 
         .op(op)
     );
 
     // Register file
-    wire [31:0] s1, s2, d;
+    wire [31:0] s, t, d;
     RegisterFile c_regfile(
-        .s1(s1),
-        .s2(s2),
-        .sr1(sr1),
-        .sr2(sr2),
-        .dr(dr_sel ? dr : sr2),
+        .s(s),
+        .t(t),
+        .reg_s(reg_s),
+        .reg_t(reg_t),
+        .reg_d(reg_d_sel ? reg_d : reg_t),
         .d(d),
-        .dr_write(dr_write)
+        .reg_write(reg_write)
     );
 
     // Sign extender
@@ -81,7 +70,7 @@ module CPU(
     ALUControl c_aluctrl(
         .mode(alu_mode),
         .op(alu_op),
-        .func(alu_func)
+        .func(func)
     );
 
     // ALU
@@ -90,15 +79,21 @@ module CPU(
     ALU alu(
         .z(alu_z),
         .zero(alu_zero),
-        .a(s1),
-        .b(alu_sel ? imm_ext : s2),
+        .a(s),
+        .b(alu_sel ? imm_ext : t),
         .mode(alu_mode)
     );
 
     // Memory
-    assign wval = s2;
+    assign wval = t;
     assign addr = alu_z;
 
     // Write back
     assign d = mem_to_reg ? rval : alu_z;
+
+    // PC next
+    wire [31:0] pc_inc = pc + 4;
+    wire [31:0] pc_jump = {pc[31:28], (jump_addr << 2)};
+    wire [31:0] pc_branch = pc_inc + (imm_ext << 2);
+    assign next_pc = jump ? pc_jump : (branch & alu_zero) ? pc_branch : pc_inc;
 endmodule

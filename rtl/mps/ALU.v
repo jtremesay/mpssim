@@ -4,4 +4,6 @@ module ALU(
     input [31:0] a, b, 
     input [3:0] mode
 );
+    assign z = a + b;
+    assign zero = z == 0;
 endmodule

@@ -1,15 +1,15 @@
 module RegisterFile(
-    output [31:0] s1, s2, 
-    input [4:0] sr1, sr2, dr, 
+    output [31:0] s, t, 
+    input [4:0] reg_s, reg_t, reg_d, 
     input [31:0] d, 
-    input dr_write
+    input reg_write
 );
-    reg [31:1] data [4:0];
-    assign s1 = sr1 == 0 ? 0 : data[sr1];
-    assign s2 = sr2 == 0 ? 0 : data[sr2];
+    reg [31:0] registers [31:1]; // r0 is read-only, we only declare r1 to r31
+    assign s = reg_s == 0 ? 0 : registers[reg_s];
+    assign t = reg_t == 0 ? 0 : registers[reg_t];
     always @(*) begin
-        if (dr_write && dr != 0) begin
-            data[dr] <= d;
+        if (reg_write && reg_d > 0) begin
+            registers[reg_d] <= d;
         end
     end
 endmodule

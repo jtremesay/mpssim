@@ -3,5 +3,5 @@ module ALUControl(
     input op,
     input [5:0] func
 );
-
+    assign mode = 0;
 endmodule
