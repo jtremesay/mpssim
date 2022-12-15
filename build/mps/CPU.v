@@ -39,16 +39,12 @@ endmodule
 
 (* hdlname = "\\CPU" *)
 (* top =  1  *)
-(* src = "rtl/mps/CPU.v:1.1-99.10" *)
+(* src = "rtl/mps/CPU.v:1.1-104.10" *)
 module CPU(instr, pc, rval, wval, addr, write, clock, nreset);
-  (* src = "rtl/mps/CPU.v:98.40-98.57" *)
-  wire _00_;
   (* src = "rtl/mps/CPU.v:56.16-56.41" *)
-  wire [4:0] _01_;
+  wire [4:0] _0_;
   (* src = "rtl/mps/CPU.v:83.12-83.33" *)
-  wire [31:0] _02_;
-  (* src = "rtl/mps/CPU.v:98.39-98.79" *)
-  wire [31:0] _03_;
+  wire [31:0] _1_;
   (* src = "rtl/mps/CPU.v:5.25-5.29" *)
   output [31:0] addr;
   wire [31:0] addr;
@@ -81,7 +77,6 @@ module CPU(instr, pc, rval, wval, addr, write, clock, nreset);
   (* src = "rtl/mps/CPU.v:35.21-35.25" *)
   wire jump;
   (* src = "rtl/mps/CPU.v:21.17-21.26" *)
-  (* unused_bits = "24 25" *)
   wire [25:0] jump_addr;
   (* src = "rtl/mps/CPU.v:35.35-35.45" *)
   wire mem_to_reg;
@@ -95,11 +90,6 @@ module CPU(instr, pc, rval, wval, addr, write, clock, nreset);
   (* src = "rtl/mps/CPU.v:3.19-3.21" *)
   output [31:0] pc;
   wire [31:0] pc;
-  (* src = "rtl/mps/CPU.v:97.17-97.26" *)
-  wire [31:0] pc_branch;
-  (* src = "rtl/mps/CPU.v:95.17-95.23" *)
-  wire [31:0] pc_inc;
-  wire [29:0] pc_jump;
   (* src = "rtl/mps/CPU.v:19.30-19.35" *)
   wire [4:0] reg_d;
   (* src = "rtl/mps/CPU.v:35.10-35.19" *)
@@ -123,19 +113,14 @@ module CPU(instr, pc, rval, wval, addr, write, clock, nreset);
   (* src = "rtl/mps/CPU.v:5.19-5.23" *)
   output [31:0] wval;
   wire [31:0] wval;
-  assign pc_inc = pc + (* src = "rtl/mps/CPU.v:95.26-95.32" *) 3'h4;
-  assign pc_branch = pc_inc + (* src = "rtl/mps/CPU.v:97.29-97.52" *) { imm_ext[29:0], 2'h0 };
-  assign _00_ = branch & (* src = "rtl/mps/CPU.v:98.40-98.57" *) alu_zero;
-  assign _01_ = reg_d_sel ? (* src = "rtl/mps/CPU.v:56.16-56.41" *) reg_d : reg_t;
-  assign _02_ = alu_sel ? (* src = "rtl/mps/CPU.v:83.12-83.33" *) imm_ext : t;
+  assign _0_ = reg_d_sel ? (* src = "rtl/mps/CPU.v:56.16-56.41" *) reg_d : reg_t;
+  assign _1_ = alu_sel ? (* src = "rtl/mps/CPU.v:83.12-83.33" *) imm_ext : t;
   assign d = mem_to_reg ? (* src = "rtl/mps/CPU.v:92.16-92.41" *) rval : alu_z;
-  assign next_pc = jump ? (* src = "rtl/mps/CPU.v:98.22-98.79" *) { 2'h0, pc[31:28], jump_addr[23:0], 2'h0 } : _03_;
-  assign _03_ = _00_ ? (* src = "rtl/mps/CPU.v:98.39-98.79" *) pc_branch : pc_inc;
   (* module_not_derived = 32'd1 *)
   (* src = "rtl/mps/CPU.v:79.9-85.6" *)
   ALU alu (
     .a(s),
-    .b(_02_),
+    .b(_1_),
     .mode(alu_mode),
     .z(alu_z),
     .zero(alu_zero)
@@ -184,7 +169,7 @@ module CPU(instr, pc, rval, wval, addr, write, clock, nreset);
   (* src = "rtl/mps/CPU.v:51.18-59.6" *)
   RegisterFile c_regfile (
     .d(d),
-    .reg_d(_01_),
+    .reg_d(_0_),
     .reg_s(reg_s),
     .reg_t(reg_t),
     .reg_write(reg_write),
@@ -197,8 +182,18 @@ module CPU(instr, pc, rval, wval, addr, write, clock, nreset);
     .imm(imm),
     .imm_ext(imm_ext)
   );
+  (* module_not_derived = 32'd1 *)
+  (* src = "rtl/mps/CPU.v:95.12-103.6" *)
+  PCNext pc_next (
+    .addr(jump_addr),
+    .branch(branch),
+    .imm(imm_ext),
+    .jump(jump),
+    .next_pc(next_pc),
+    .pc(pc),
+    .zero(alu_zero)
+  );
   assign addr = alu_z;
-  assign pc_jump = { pc[31:28], jump_addr[23:0], 2'h0 };
   assign wval = t;
 endmodule
 
@@ -269,6 +264,47 @@ module InstructionDecoder(op, func, reg_s, reg_t, reg_d, imm, jump_addr, instr);
   assign reg_d = instr[15:11];
   assign reg_s = instr[25:21];
   assign reg_t = instr[20:16];
+endmodule
+
+(* hdlname = "\\PCNext" *)
+(* src = "rtl/mps/PCNext.v:1.1-11.10" *)
+module PCNext(next_pc, pc, imm, addr, jump, branch, zero);
+  (* src = "rtl/mps/PCNext.v:10.40-10.53" *)
+  wire _0_;
+  (* src = "rtl/mps/PCNext.v:10.39-10.75" *)
+  wire [31:0] _1_;
+  (* src = "rtl/mps/PCNext.v:4.18-4.22" *)
+  input [25:0] addr;
+  wire [25:0] addr;
+  (* src = "rtl/mps/PCNext.v:5.17-5.23" *)
+  input branch;
+  wire branch;
+  (* src = "rtl/mps/PCNext.v:3.22-3.25" *)
+  input [31:0] imm;
+  wire [31:0] imm;
+  (* src = "rtl/mps/PCNext.v:5.11-5.15" *)
+  input jump;
+  wire jump;
+  (* src = "rtl/mps/PCNext.v:2.19-2.26" *)
+  output [31:0] next_pc;
+  wire [31:0] next_pc;
+  (* src = "rtl/mps/PCNext.v:3.18-3.20" *)
+  input [31:0] pc;
+  wire [31:0] pc;
+  (* src = "rtl/mps/PCNext.v:9.17-9.26" *)
+  wire [31:0] pc_branch;
+  (* src = "rtl/mps/PCNext.v:7.17-7.23" *)
+  wire [31:0] pc_inc;
+  wire [29:0] pc_jump;
+  (* src = "rtl/mps/PCNext.v:5.25-5.29" *)
+  input zero;
+  wire zero;
+  assign pc_inc = pc + (* src = "rtl/mps/PCNext.v:7.26-7.32" *) 3'h4;
+  assign pc_branch = pc_inc + (* src = "rtl/mps/PCNext.v:9.29-9.48" *) { imm[29:0], 2'h0 };
+  assign _0_ = branch & (* src = "rtl/mps/PCNext.v:10.40-10.53" *) zero;
+  assign next_pc = jump ? (* src = "rtl/mps/PCNext.v:10.22-10.75" *) { 2'h0, pc_inc[31:28], addr[23:0], 2'h0 } : _1_;
+  assign _1_ = _0_ ? (* src = "rtl/mps/PCNext.v:10.39-10.75" *) pc_branch : pc_inc;
+  assign pc_jump = { pc_inc[31:28], addr[23:0], 2'h0 };
 endmodule
 
 (* hdlname = "\\ProgramCounter" *)
