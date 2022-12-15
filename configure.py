@@ -8,7 +8,6 @@ DEPS = {
         "mps/Control",
         "mps/InstructionDecoder",
         "mps/ProgramCounter",
-        "mps/PCLogic",
         "mps/SignExtender",
         "mps/RegisterFile",
     ],
@@ -22,9 +21,8 @@ TARGETS = [
     "mps/Control",
     "mps/InstructionDecoder",
     "mps/ProgramCounter",
-    "mps/PCLogic",
+    #"mps/RegisterFile",
     "mps/SignExtender",
-    "mps/RegisterFile",
     "mps/CPU",
     "soc/main",
 ]
@@ -55,33 +53,40 @@ with (Path(__name__).parent / "Makefile").open("w") as f:
         f.write("\n")
 
         # Json post-processed netlist target
-        f.write(f"build/{t}.json: build/{t}.prep.json\n")
+        f.write(f"build/{t}.json: build/{t}.synth.json\n")
         f.write(
-            f"\ttools/netlist-postprocessor.py build/{t}.prep.json build/{t}.json rtl/{t}.pp.json\n"
+            f"\ttools/netlist-postprocessor.py build/{t}.synth.json build/{t}.json rtl/{t}.pp.json\n"
         )
         f.write("\n")
 
         # Json netlist target
-        f.write(f"build/{t}.prep.json:")
+        f.write(f"build/{t}.synth.json: build/{t}.v\n")
+        f.write(
+            f"\tyosys -L build/{t}.json.log -o build/{t}.synth.json -p 'prep -top {top}' build/{t}.v\n"
+        )
+        f.write("\n")
+
+        # Netlist target
+        f.write(f"build/{t}.v:")
         for d in deps:
             f.write(f" rtl/{d}.v")
         f.write(f" rtl/{t}.v\n")
         f.write(
-            f"\tyosys -L build/{t}.synth.log -o build/{t}.prep.json -p 'prep -top {top}'"
+            f"\tyosys -L build/{t}.synth.log -o build/{t}.v -p 'prep -top {top}'"
         )
         for d in deps:
             f.write(f" rtl/{d}.v")
         f.write(f" rtl/{t}.v\n")
         f.write("\n")
 
+
     # Clean target
     f.write("clean:\n")
     f.write("\t$(RM)")
-    for t in TARGETS:
-        f.write(f" build/{t}.svg")
-        f.write(f" build/{t}.json")
-        f.write(f" build/{t}.prep.json")
-        f.write(f" build/{t}.synth.log")
+    f.write(f" build/**/*.svg")
+    f.write(f" build/**/*.json")
+    f.write(f" build/**/*.v")
+    f.write(f" build/**/*.log")
     f.write("\n\n")
 
     f.write("PHONY: all clean\n")
