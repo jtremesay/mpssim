@@ -1,5 +1,5 @@
 {
-  "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+  "creator": "Yosys 0.23 (git sha1 7ce5011c24b, gcc 11.3.0 -fPIC -Os)",
   "modules": {
     "SignExtender": {
       "attributes": {

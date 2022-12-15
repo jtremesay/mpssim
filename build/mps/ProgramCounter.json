@@ -1,5 +1,5 @@
 {
-    "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+    "creator": "Yosys 0.23 (git sha1 7ce5011c24b, gcc 11.3.0 -fPIC -Os)",
     "modules": {
         "ProgramCounter": {
             "attributes": {
@@ -45,7 +45,7 @@
                         33
                     ]
                 },
-                "pc_next": {
+                "next_pc": {
                     "direction": "input",
                     "bits": [
                         34,
@@ -202,6 +202,46 @@
                         "src": "rtl/mps/ProgramCounter.v:4.11-4.16"
                     }
                 },
+                "next_pc": {
+                    "hide_name": 0,
+                    "bits": [
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65
+                    ],
+                    "attributes": {
+                        "src": "rtl/mps/ProgramCounter.v:3.18-3.25"
+                    }
+                },
                 "nreset": {
                     "hide_name": 0,
                     "bits": [
@@ -249,46 +289,6 @@
                     ],
                     "attributes": {
                         "src": "rtl/mps/ProgramCounter.v:2.23-2.25"
-                    }
-                },
-                "pc_next": {
-                    "hide_name": 0,
-                    "bits": [
-                        34,
-                        35,
-                        36,
-                        37,
-                        38,
-                        39,
-                        40,
-                        41,
-                        42,
-                        43,
-                        44,
-                        45,
-                        46,
-                        47,
-                        48,
-                        49,
-                        50,
-                        51,
-                        52,
-                        53,
-                        54,
-                        55,
-                        56,
-                        57,
-                        58,
-                        59,
-                        60,
-                        61,
-                        62,
-                        63,
-                        64,
-                        65
-                    ],
-                    "attributes": {
-                        "src": "rtl/mps/ProgramCounter.v:3.18-3.25"
                     }
                 }
             }

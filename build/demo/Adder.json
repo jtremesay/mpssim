@@ -1,5 +1,5 @@
 {
-    "creator": "Yosys 0.16 (git sha1 yosys-0.16, gcc 11.3.0 -fPIC -Os)",
+    "creator": "Yosys 0.23 (git sha1 7ce5011c24b, gcc 11.3.0 -fPIC -Os)",
     "modules": {
         "Adder": {
             "attributes": {
@@ -121,7 +121,7 @@
                 }
             },
             "cells": {
-                "$add$rtl/demo/Adder.v:2$1": {
+                "$add$build/demo/Adder.v:16$1": {
                     "hide_name": 1,
                     "type": "$add",
                     "parameters": {
